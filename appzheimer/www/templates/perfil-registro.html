@@ -1,0 +1,31 @@
+<ion-view view-title="Crea tu perfil">
+  <ion-content class="padding">
+    <form name="registroForm" novalidate="" ng-submit="save(usuario)">
+
+      <div class="list">
+
+        <label class="item item-input">
+          <span class="input-label">Nombre</span>
+          <input type="text" name="nombre" ng-model="usuario.nombre"required>
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label">Sobrenombre</span>
+          <input type="text" name="sobrenombre" ng-model="usuario.apodo" required>
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label">Fecha de Nacimiento</span>
+          <input type="date" name="fecha" ng-model="usuario.fecha" required>
+        </label>
+
+
+      </div>
+
+      <button class="button button-full button-positive" type="submit">
+        Registrarme
+      </button>
+
+    </form>
+  </ion-content>
+</ion-view>

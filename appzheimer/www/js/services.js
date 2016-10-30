@@ -1,4 +1,132 @@
 angular.module('starter.services', [])
+  .factory('Familiares',function () {
+    var FAMILIARES_KEY="FAMILIARES";
+    var FAMILIARES_INDEX = "FAMILIARES_INDEX";
+    var familiares;
+    var index =0;
+    return{
+      all:function(){
+        familiares =(window.localStorage.getItem(FAMILIARES_KEY))?JSON.parse(window.localStorage.getItem(FAMILIARES_KEY)):[];
+        return familiares;
+      },
+      remove:function(f){
+        familiares = window.localStorage.getItem(FAMILIARES_KEY);
+        if(familiares){
+          familiares = JSON.parse(familiares);
+          familiares.pop(e);
+          window.localStorage.setItem(FAMILIARES_KEY, JSON.stringify(familiares));
+        }
+      },
+      get:function(familiarId){
+        familiares = window.localStorage.getItem(FAMILIARES_KEY);
+        if(familiares) {
+          familiares = JSON.parse(familiares);
+          for(var i =0; i<familiares.length(); i++){
+            if(familiares[i].id==familiarId)
+              return familiares[i];
+          }
+        }
+      },
+      add:function(f){
+        familiares = window.localStorage.getItem(FAMILIARES_KEY);
+        if(familiares)
+          familiares = JSON.parse(familiares);
+        else
+          familiares=[];
+        f.id= index;
+        familiares.push(f);
+        index++;
+        window.localStorage.setItem(FAMILIARES_KEY, JSON.stringify(familiares));
+      },
+      update:function (f) {
+        familiares = window.localStorage.getItem(FAMILIARES_KEY);
+        if(familiares) {
+          familiares = JSON.parse(familiares);
+          for(var i =0; i<familiares.length(); i++){
+            if(familiares[i].id==f.id)
+              familiares[i]=f;
+          }
+        }
+      }
+    };
+
+  })
+  .factory('Rutina',function () {
+    var index=0;
+    var RUTINA_KEY ="RUTINA";
+    var rutina;
+    return{
+      all:function(){
+        rutina = (window.localStorage.getItem(RUTINA_KEY))?JSON.parse(window.localStorage.getItem(RUTINA_KEY)):[];
+        return rutina;
+      },
+      remove:function(e){
+        rutina = window.localStorage.getItem(RUTINA_KEY);
+        if(rutina){
+          rutina = JSON.parse(rutina);
+          rutina.pop(e);
+          window.localStorage.setItem(RUTINA_KEY, JSON.stringify(rutina));
+        }
+      },
+      get:function(eventoId){
+        rutina = window.localStorage.getItem(RUTINA_KEY);
+        if(rutina) {
+          rutina = JSON.parse(rutina);
+          for(var i =0;i<rutina.length();i++){
+            if(rutina[i]==eventoId)
+              return rutina[i];
+          }
+        }
+      },
+      add:function(e){
+        rutina = window.localStorage.getItem(RUTINA_KEY);
+        if(rutina)
+          rutina = JSON.parse(rutina);
+        else
+          rutina=[];
+        e.id=index;
+        rutina.push(e);
+        index++;
+        window.localStorage.setItem(RUTINA_KEY, JSON.stringify(rutina));
+      },
+      update:function (e) {
+        rutina = window.localStorage.getItem(RUTINA_KEY);
+        if(rutina) {
+          rutina = JSON.parse(rutina);
+          for(var i =0;i<rutina.length();i++){
+            if(rutina[i]==e.id)
+              rutina[i]=e;
+          }
+        }
+      }
+    };
+  })
+  .factory('Usuario',function () {
+    var usuario;
+    var USUARIO_KEY="USUARIO";
+    return{
+      remove:function(){
+        usuario ={};
+        window.localStorage.removeItem(USUARIO_KEY);
+
+      },
+      get:function(){
+        usuario = (window.localStorage.getItem(USUARIO_KEY))?JSON.parse(window.localStorage.getItem(USUARIO_KEY)):null;
+        return usuario;
+      },
+      create:function(u){
+        usuario = u;
+        window.localStorage.setItem(USUARIO_KEY, JSON.stringify(usuario));
+      },
+      update:function (u) {
+        usuario = u;
+        window.localStorage.setItem(USUARIO_KEY, JSON.stringify(usuario));
+      }
+    };
+  })
+  .factory('Configuracion',function () {
+
+  })
 
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array

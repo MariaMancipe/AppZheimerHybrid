@@ -1,0 +1,17 @@
+<ion-view view-title="Rutina">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="e in rutina" type="item-text-wrap"
+                href="#/tab/rutina/{{e.id}}">
+        <!--img ng-src="{{chat.face}}"-->
+        <h2>{{e.nombre}}</h2>
+        <p>{{e.hora}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(e)">
+          Eliminar evento
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

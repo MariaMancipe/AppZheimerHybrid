@@ -40,22 +40,75 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
+  .state('tab.rutina', {
+    url: '/rutina',
     views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+      'tab-rutina': {
+        templateUrl: 'templates/tab-rutina.html',
+        controller: 'RutinaCtrl'
       }
     }
   })
-
-  .state('tab.chats', {
-      url: '/chats',
+    .state('tab.rutina-registro', {
+      url: '/rutina/registro',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+        'tab-rutina': {
+          templateUrl: 'templates/evento-registro.html',
+          controller: 'RutinaRegistroCtrl'
+        }
+      }
+    })
+  .state('tab.perfil', {
+      url: '/perfil',
+      views: {
+        'tab-perfil': {
+          templateUrl: 'templates/tab-perfil.html',
+          controller: 'PerfilCtrl'
+        }
+      }
+    })
+    .state('tab.perfil-registro', {
+      url: '/perfil/registro',
+      views: {
+        'tab-perfil': {
+          templateUrl: 'templates/perfil-registro.html',
+          controller: 'PerfilRegistroCtrl'
+        }
+      }
+    })
+    .state('tab.juego', {
+      url: '/juego',
+      views: {
+        'tab-juego': {
+          templateUrl: 'templates/tab-juego.html',
+          controller: 'JuegoCtrl'
+        }
+      }
+    })
+    .state('tab.familiares', {
+      url: '/familiares',
+      views: {
+        'tab-familiares': {
+          templateUrl: 'templates/tab-familiares.html',
+          controller: 'FamiliaresCtrl'
+        }
+      }
+    })
+    .state('tab.familiares-registro', {
+      url: '/familiares/registro',
+      views: {
+        'tab-familiares': {
+          templateUrl: 'templates/familiar-registro.html',
+          controller: 'FamiliaresCtrl'
+        }
+      }
+    })
+    .state('tab.configuracion', {
+      url: '/configuracion',
+      views: {
+        'tab-configuracion': {
+          templateUrl: 'templates/tab-configuracion.html',
+          controller: 'ConfiguracionCtrl'
         }
       }
     })
@@ -80,6 +133,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/rutina');
 
 });

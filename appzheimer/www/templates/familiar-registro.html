@@ -1,0 +1,28 @@
+<ion-view view-title="Agrega un familiar">
+  <ion-content class="padding">
+    <form name="familiarForm" novalidate="" ng-click="save(familiar)">
+
+      <div class="list">
+
+        <label class="item item-input">
+          <span class="input-label">Nombre</span>
+          <input type="text" name="nombre" ng-model="familiar.nombre" placeholder="Ingresa el nombre de tu familiar" required>
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label">Sobrenombre</span>
+          <input type="text" name="sobrenombre" ng-model="familiar.apodo" placeholder="Ingresa el sobrenombre de tu familiar" required>
+        </label>
+
+      </div>
+
+      <button class="button button-full button-positive" type="submit" >
+        Agregar Familiar
+      </button>
+      <button class="button button-full button-assertive" ng-click="cancel()">
+        Cancelar
+      </button>
+
+    </form>
+  </ion-content>
+</ion-view>
