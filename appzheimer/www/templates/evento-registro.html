@@ -1,8 +1,8 @@
 <ion-view view-title="Agrega una actividad">
   <ion-content class="padding">
-    <form name="actividadForm" novalidate="" ng-click="save(evento)">
+    <form name="actividadForm" novalidate="" >
 
-      <div class="list">
+      <div class="list" ng-show="!mostrar">
 
         <label class="item item-input">
           <span class="input-label">Nombre</span>
@@ -16,13 +16,13 @@
 
       </div>
 
-      <button class="button button-full button-positive" type="submit" >
-        Agregar Evento
+      <button class="button button-full button-positive" type="submit"  ng-show="!mostrar" ng-click="save(evento)">
+        Guardar
       </button>
+      <button class="button button-full button-balanced" ng-show="mostrar" ng-click="init()">Agregar otra actividad</button>
       <button class="button button-full button-assertive" ng-click="cancel()">
         Cancelar
       </button>
-
     </form>
   </ion-content>
 </ion-view>

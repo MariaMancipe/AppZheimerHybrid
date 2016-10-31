@@ -3,7 +3,7 @@ angular.module('starter.services', [])
     var FAMILIARES_KEY="FAMILIARES";
     var FAMILIARES_INDEX = "FAMILIARES_INDEX";
     var familiares;
-    var index =0;
+    var index =(window.localStorage.getItem(FAMILIARES_INDEX))?JSON.parse(window.localStorage.getItem(FAMILIARES_INDEX)):0;
     return{
       all:function(){
         familiares =(window.localStorage.getItem(FAMILIARES_KEY))?JSON.parse(window.localStorage.getItem(FAMILIARES_KEY)):[];
@@ -21,8 +21,8 @@ angular.module('starter.services', [])
         familiares = window.localStorage.getItem(FAMILIARES_KEY);
         if(familiares) {
           familiares = JSON.parse(familiares);
-          for(var i =0; i<familiares.length(); i++){
-            if(familiares[i].id==familiarId)
+          for(var i =0; i<familiares.length; i++){
+            if(familiares[i].id==parseInt(familiarId))
               return familiares[i];
           }
         }
@@ -35,16 +35,21 @@ angular.module('starter.services', [])
           familiares=[];
         f.id= index;
         familiares.push(f);
-        index++;
         window.localStorage.setItem(FAMILIARES_KEY, JSON.stringify(familiares));
+        index++;
+        window.localStorage.setItem(FAMILIARES_INDEX,JSON.stringify(index));
       },
       update:function (f) {
         familiares = window.localStorage.getItem(FAMILIARES_KEY);
         if(familiares) {
           familiares = JSON.parse(familiares);
-          for(var i =0; i<familiares.length(); i++){
-            if(familiares[i].id==f.id)
+          for(var i =0; i<familiares.length; i++){
+            if(familiares[i].id==parseInt(f.id)){
               familiares[i]=f;
+              window.localStorage.setItem(FAMILIARES_KEY, JSON.stringify(familiares));
+              break;
+            }
+
           }
         }
       }
@@ -52,8 +57,9 @@ angular.module('starter.services', [])
 
   })
   .factory('Rutina',function () {
-    var index=0;
     var RUTINA_KEY ="RUTINA";
+    var RUTINA_INDEX="RUTINA_INDEX";
+    var index=(window.localStorage.getItem(RUTINA_INDEX))?JSON.parse(window.localStorage.getItem(RUTINA_INDEX)):0;
     var rutina;
     return{
       all:function(){
@@ -72,8 +78,8 @@ angular.module('starter.services', [])
         rutina = window.localStorage.getItem(RUTINA_KEY);
         if(rutina) {
           rutina = JSON.parse(rutina);
-          for(var i =0;i<rutina.length();i++){
-            if(rutina[i]==eventoId)
+          for(var i =0;i<rutina.length;i++){
+            if(rutina[i].id==parseInt(eventoId))
               return rutina[i];
           }
         }
@@ -88,14 +94,18 @@ angular.module('starter.services', [])
         rutina.push(e);
         index++;
         window.localStorage.setItem(RUTINA_KEY, JSON.stringify(rutina));
+        window.localStorage.setItem(RUTINA_INDEX,JSON.stringify(index));
       },
       update:function (e) {
         rutina = window.localStorage.getItem(RUTINA_KEY);
         if(rutina) {
           rutina = JSON.parse(rutina);
-          for(var i =0;i<rutina.length();i++){
-            if(rutina[i]==e.id)
+          for(var i =0;i<rutina.length;i++){
+            if(rutina[i].id==parseInt(e.id)){
               rutina[i]=e;
+              window.localStorage.setItem(RUTINA_KEY, JSON.stringify(rutina));
+              break;
+            }
           }
         }
       }

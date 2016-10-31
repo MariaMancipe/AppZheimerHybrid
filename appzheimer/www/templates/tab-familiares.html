@@ -1,4 +1,22 @@
 <ion-view view-title="Familiares">
   <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="f in familiares" type="item-text-wrap">
+        <!--img ng-src="{{chat.face}}"-->
+        <div>
+          <h2>{{f.nombre}}</h2>
+          <p>{{f.apodo}} - {{f.parentesco}}</p>
+          <a href="#/tab/familiares/{{f.id}}"><i class="icon ion-chevron-right icon-accessory"></i></a>
+        </div>
+      </ion-item>
+    </ion-list>
   </ion-content>
+  <div class="float-button">
+      <span class="height-fix">
+        <a class="content" href="#/tab/familiares/registro">
+          <i class="ion-ios-plus-empty"> </i>
+        </a>
+      </span>
+  </div>
+
 </ion-view>

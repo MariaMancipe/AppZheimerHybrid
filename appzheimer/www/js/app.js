@@ -58,6 +58,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
+    .state('tab.rutina-editar', {
+      url: '/rutina/:eventoId',
+      views: {
+        'tab-rutina': {
+          templateUrl: 'templates/evento-registro.html',
+          controller: 'RutinaEditarCtrl'
+        }
+      }
+    })
   .state('tab.perfil', {
       url: '/perfil',
       views: {
@@ -99,7 +108,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
         'tab-familiares': {
           templateUrl: 'templates/familiar-registro.html',
-          controller: 'FamiliaresCtrl'
+          controller: 'FamiliaresRegistroCtrl'
+        }
+      }
+    })
+    .state('tab.familiares-editar', {
+      url: '/familiares/:familiarId',
+      views: {
+        'tab-familiares': {
+          templateUrl: 'templates/familiar-registro.html',
+          controller: 'FamiliaresEditarCtrl'
         }
       }
     })

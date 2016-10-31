@@ -2,7 +2,7 @@
 //RUTINA
 //----------------------------------------------------------------------------------
 angular.module('starter.controllers', [])
-  .controller('RutinaCtrl', function($scope, $location, Rutina, Usuario) {
+  .controller('RutinaCtrl', function($ionicHistory,$scope, $location, Rutina, Usuario) {
     if(!Usuario.get()){
       $location.path('/tab/perfil/registro');
     }
@@ -12,20 +12,31 @@ angular.module('starter.controllers', [])
     };
 
   })
-  .controller('RutinaRegistroCtrl',function($ionicModal, $scope,$location,Rutina){
-    $scope.showModal = function () {
-      $ionicModal.fromTemplateUrl('/templates/rutina-modal.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-      }).then(function(modal) { $scope.modal = modal; });
-    };
+  .controller('RutinaRegistroCtrl',function( $filter, $ionicModal, $scope,$location,Rutina){
+    $scope.mostrar = false;
     $scope.save=function (evento) {
+      evento.hora = $filter('date')(evento.hora, 'shortTime');
       Rutina.add(evento);
-      $scope.showModal();
+      $scope.mostrar = true;
+    };
+    $scope.cancel=function () {
+      $location.path('/tab/familiares/registro');
+    };
+    $scope.init=function () {
+      $scope.mostrar = false;
+    };
+  })
+  .controller('RutinaEditarCtrl',function( $stateParams, $filter,$scope,$location,Rutina, Familiares){
+    $scope.mostrar = false;
+    $scope.evento = Rutina.get($stateParams.eventoId);
+    $scope.save=function (evento) {
+      evento.hora = $filter('date')(evento.hora, 'shortTime');
+      Rutina.update(evento);
     };
     $scope.cancel=function () {
       $location.path('/tab/rutina');
     }
+
   })
 
   //----------------------------------------------------------------------------------
@@ -38,8 +49,9 @@ angular.module('starter.controllers', [])
     }
     $scope.perfil = Usuario.get();
   })
-  .controller('PerfilRegistroCtrl', function($location, $scope, Usuario) {
+  .controller('PerfilRegistroCtrl', function($filter, $location, $scope, Usuario) {
     $scope.save=function(usuario){
+      usuario.fecha = $filter('date')(usuario.fecha, 'd-MMMM-yyyy');
       Usuario.create(usuario);
       $location.path('/tab/rutina/registro');
     };
@@ -66,12 +78,28 @@ angular.module('starter.controllers', [])
     $scope.remove=function(familiar){Familiares.remove(familiar)};
   })
   .controller('FamiliaresRegistroCtrl', function($location, $scope, Familiares) {
+    $scope.mostrar = false;
     $scope.save=function(familiar){
+      $scope.mostrar = true;
       Familiares.add(familiar);
     };
     $scope.cancel=function() {
-      $location.path('/tab/rutina');
+      $location.path('/tab/familiares');
     };
+    $scope.init=function () {
+      $scope.mostrar = false;
+    };
+  })
+
+  .controller('FamiliaresEditarCtrl', function($stateParams, $location, $scope, Familiares) {
+    $scope.familiar = Familiares.get($stateParams.familiarId);
+    $scope.save=function(familiar){
+      Familiares.update(familiar);
+    };
+    $scope.cancel=function() {
+      $location.path('/tab/familiares');
+    };
+
   })
 
   //----------------------------------------------------------------------------------
