@@ -11,10 +11,16 @@ angular.module('starter.services', [])
       },
       remove:function(f){
         familiares = window.localStorage.getItem(FAMILIARES_KEY);
-        if(familiares){
+        if(familiares) {
           familiares = JSON.parse(familiares);
-          familiares.pop(e);
-          window.localStorage.setItem(FAMILIARES_KEY, JSON.stringify(familiares));
+          for(var i =0; i<familiares.length; i++){
+            if(familiares[i].id==parseInt(f.id)){
+              familiares.splice(i,1);
+              window.localStorage.setItem(FAMILIARES_KEY, JSON.stringify(familiares));
+              break;
+            }
+
+          }
         }
       },
       get:function(familiarId){
@@ -68,10 +74,15 @@ angular.module('starter.services', [])
       },
       remove:function(e){
         rutina = window.localStorage.getItem(RUTINA_KEY);
-        if(rutina){
+        if(rutina) {
           rutina = JSON.parse(rutina);
-          rutina.pop(e);
-          window.localStorage.setItem(RUTINA_KEY, JSON.stringify(rutina));
+          for(var i =0;i<rutina.length;i++){
+            if(rutina[i].id==parseInt(e.id)){
+              rutina.splice(i,1);
+              window.localStorage.setItem(RUTINA_KEY, JSON.stringify(rutina));
+              break;
+            }
+          }
         }
       },
       get:function(eventoId){
@@ -133,9 +144,6 @@ angular.module('starter.services', [])
         window.localStorage.setItem(USUARIO_KEY, JSON.stringify(usuario));
       }
     };
-  })
-  .factory('Configuracion',function () {
-
   })
 
 .factory('Chats', function() {

@@ -1,12 +1,21 @@
 <ion-view view-title="Rutina">
+  <ion-nav-buttons side="left" >
+    <button class="button button-icon button-clear ion-navicon button-positive"  ng-click="order()">
+    </button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon button-clear ion-compose button-positive" ng-click="edit()">
+    </button>
+  </ion-nav-buttons>
   <ion-content>
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="e in rutina" type="item-text-wrap"
-                href="#/tab/rutina/{{e.id}}">
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="e in rutina" type="item-text-wrap">
         <!--img ng-src="{{chat.face}}"-->
         <h2>{{e.nombre}}</h2>
         <p>{{e.hora}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
+        <a href="#/tab/rutina/{{e.id}}" ng-show="!mostrar && !ordenar"><i class="icon ion-chevron-right icon-accessory"></i></a>
+        <a ng-show="mostrar" href="" ng-click="remove(e)"><i class="icon ion-close icon-accessory"></i></a>
+        <a ng-show="ordenar" href="" ng-click="move(e)"><i class="icon ion-drag icon-accessory"></i></a>
       </ion-item>
     </ion-list>
   </ion-content>

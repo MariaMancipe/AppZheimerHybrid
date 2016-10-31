@@ -7,28 +7,49 @@ angular.module('starter.controllers', [])
       $location.path('/tab/perfil/registro');
     }
     $scope.rutina = Rutina.all();
-    $scope.remove = function (e) {
-      Rutina.remove(e);
-    };
+    $scope.mostrar=false;
+    $scope.ordenar = false;
+    $scope.remove = function (e) {Rutina.remove(e);};
+    $scope.edit=function () {$scope.mostrar = !$scope.mostrar;};
+    $scope.order =function () {$scope.ordenar=!$scope.ordenar;};
+    $scope.move = function () {
 
+    };
   })
-  .controller('RutinaRegistroCtrl',function( $filter, $ionicModal, $scope,$location,Rutina){
+  .controller('RutinaRegistroCtrl',function($filter, $ionicModal, $scope,$location,Rutina, Usuario, $cordovaSocialSharing){
     $scope.mostrar = false;
     $scope.save=function (evento) {
       evento.hora = $filter('date')(evento.hora, 'shortTime');
       Rutina.add(evento);
       $scope.mostrar = true;
+      $scope.share("Un día genial");
     };
     $scope.cancel=function () {
       $location.path('/tab/familiares/registro');
     };
     $scope.init=function () {
       $scope.mostrar = false;
+
+    };
+    $scope.share=function(message){
+      $cordovaSocialSharing.shareViaWhatsApp(message, null, null).then(function(result) {
+          alert("Informacion: La actividad se compartio existosamente");
+        }, function(err) {
+          alert("Error: No se ha podido compartir la actividad por whatsapp");
+        });
     };
   })
   .controller('RutinaEditarCtrl',function( $stateParams, $filter,$scope,$location,Rutina, Familiares){
     $scope.mostrar = false;
     $scope.evento = Rutina.get($stateParams.eventoId);
+    $scope.convertTime=function(string){
+      var espacio = string.split(" ");
+      var hora = espacio[0].split(":");
+      if(espacio[1]=="PM")
+        hora[0] = parseInt(hora[0])+12;
+      $scope.evento.hora=new Date(1970,0,1, hora[0], hora[1], 0);
+    };
+    $scope.convertTime($scope.evento.hora);
     $scope.save=function (evento) {
       evento.hora = $filter('date')(evento.hora, 'shortTime');
       Rutina.update(evento);
@@ -36,6 +57,7 @@ angular.module('starter.controllers', [])
     $scope.cancel=function () {
       $location.path('/tab/rutina');
     }
+
 
   })
 
@@ -74,8 +96,16 @@ angular.module('starter.controllers', [])
     if(!Usuario.get()){
       $location.path('/tab/perfil/registro');
     }
+    $scope.mostrar = false;
     $scope.familiares = Familiares.all();
-    $scope.remove=function(familiar){Familiares.remove(familiar)};
+    $scope.remove=function(familiar){
+      console.log("paso por aquí");
+      Familiares.remove(familiar);
+    };
+    $scope.edit=function () {
+      $scope.mostrar = !$scope.mostrar;
+    };
+
   })
   .controller('FamiliaresRegistroCtrl', function($location, $scope, Familiares) {
     $scope.mostrar = false;
@@ -101,16 +131,6 @@ angular.module('starter.controllers', [])
     };
 
   })
-
-  //----------------------------------------------------------------------------------
-  //CONFIG
-  //----------------------------------------------------------------------------------
-  .controller('ConfiguracionCtrl', function($location, $scope, Usuario) {
-    if(!Usuario.get()){
-      $location.path('/tab/perfil/registro');
-    }
-  })
-
   //----------------------------------------------------------------------------------
   //TRASH
   //----------------------------------------------------------------------------------
