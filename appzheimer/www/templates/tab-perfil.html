@@ -1,5 +1,8 @@
 <ion-view view-title="Tu Perfil">
   <ion-content class="center-text">
+    <ion-scroll direction="x" style="height:200px; min-height: 200px; overflow: scroll; white-space: nowrap;">
+      <img ng-src="{{perfil.rutaImagen}}" style="height:200px; padding: 5px 5px 5px 5px;"/>
+    </ion-scroll>
     <h4>Mi nombre es</h4>
     <h1 class="color-text">{{perfil.nombre}}</h1>
     <h4> Me llaman </h4>

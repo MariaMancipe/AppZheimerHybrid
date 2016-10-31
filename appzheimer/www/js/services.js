@@ -3,6 +3,7 @@ angular.module('starter.services', [])
     var FAMILIARES_KEY="FAMILIARES";
     var FAMILIARES_INDEX = "FAMILIARES_INDEX";
     var familiares;
+    var path;
     var index =(window.localStorage.getItem(FAMILIARES_INDEX))?JSON.parse(window.localStorage.getItem(FAMILIARES_INDEX)):0;
     return{
       all:function(){
@@ -40,10 +41,13 @@ angular.module('starter.services', [])
         else
           familiares=[];
         f.id= index;
+        f.rutaImagen = path;
         familiares.push(f);
         window.localStorage.setItem(FAMILIARES_KEY, JSON.stringify(familiares));
         index++;
         window.localStorage.setItem(FAMILIARES_INDEX,JSON.stringify(index));
+      },setPath : function (p) {
+        path = p;
       },
       update:function (f) {
         familiares = window.localStorage.getItem(FAMILIARES_KEY);
@@ -125,6 +129,7 @@ angular.module('starter.services', [])
   .factory('Usuario',function () {
     var usuario;
     var USUARIO_KEY="USUARIO";
+    var path;
     return{
       remove:function(){
         usuario ={};
@@ -137,7 +142,10 @@ angular.module('starter.services', [])
       },
       create:function(u){
         usuario = u;
+        usuario.rutaImagen = path;
         window.localStorage.setItem(USUARIO_KEY, JSON.stringify(usuario));
+      },setPath : function (p) {
+        path = p;
       },
       update:function (u) {
         usuario = u;
@@ -145,6 +153,75 @@ angular.module('starter.services', [])
       }
     };
   })
+
+  .factory('ImageService', function($cordovaCamera, $q, $cordovaFile, Usuario, Familiares) {
+    var imageName;
+    function makeid() {
+      var text = '';
+      var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+      for (var i = 0; i < 5; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+      return text;
+    };
+
+    function optionsForType(type) {
+      var source;
+      switch (type) {
+        case 0:
+          source = Camera.PictureSourceType.CAMERA;
+          break;
+        case 1:
+          source = Camera.PictureSourceType.PHOTOLIBRARY;
+          break;
+      }
+      return {
+        destinationType: Camera.DestinationType.FILE_URI,
+        sourceType: source,
+        allowEdit: false,
+        encodingType: Camera.EncodingType.JPEG,
+        popoverOptions: CameraPopoverOptions,
+        saveToPhotoAlbum: false
+      };
+    };
+
+    function returnName() {
+      return imageName;
+    };
+
+    function saveMedia(type,service) {
+      return $q(function(resolve, reject) {
+        var options = optionsForType(type);
+        console.log("Escoge una opción");
+        $cordovaCamera.getPicture(options).then(function(imageUrl) {
+          console.log("Obtuvo url");
+          var name = imageUrl.substr(imageUrl.lastIndexOf('/') + 1);
+          var namePath = imageUrl.substr(0, imageUrl.lastIndexOf('/') + 1);
+          var newName = makeid() + name;
+          $cordovaFile.copyFile(namePath, name, cordova.file.dataDirectory, newName)
+            .then(function(info) {
+              console.log("Success");
+              imageName = newName;
+              console.log(newName);
+              if(service == 0)
+                Usuario.setPath(newName);
+              else
+                Familiares.setPath(newName);
+              //FileService.storeImage(newName);
+              resolve();
+            }, function(e) {
+              reject();
+            });
+        });
+      })
+    };
+    return {
+      handleMediaDialog: saveMedia,
+      returnName : returnName
+    };
+  })
+
 
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array

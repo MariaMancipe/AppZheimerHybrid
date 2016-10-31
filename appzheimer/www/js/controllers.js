@@ -6,10 +6,20 @@ angular.module('starter.controllers', [])
     if(!Usuario.get()){
       $location.path('/tab/perfil/registro');
     }
+
+    $scope.$on('$ionicView.enter', function(){
+      $scope.rutina = Rutina.all();
+    });
+    $scope.$on('$ionicView.loaded', function(){
+      $scope.rutina = Rutina.all();
+    });
     $scope.rutina = Rutina.all();
     $scope.mostrar=false;
     $scope.ordenar = false;
-    $scope.remove = function (e) {Rutina.remove(e);};
+    $scope.remove = function (e) {
+      Rutina.remove(e);
+      $scope.rutina = Rutina.all();
+    };
     $scope.edit=function () {$scope.mostrar = !$scope.mostrar;};
     $scope.order =function () {$scope.ordenar=!$scope.ordenar;};
     $scope.move = function () {
@@ -22,10 +32,10 @@ angular.module('starter.controllers', [])
       evento.hora = $filter('date')(evento.hora, 'shortTime');
       Rutina.add(evento);
       $scope.mostrar = true;
-      $scope.share("Un día genial");
+      $scope.share(Usuario.get().nombre +" quiere compartir la actividad " + evento.nombre+ " contigo, a la hora " + evento.hora);
     };
     $scope.cancel=function () {
-      $location.path('/tab/familiares/registro');
+      $location.path('/tab/rutina');
     };
     $scope.init=function () {
       $scope.mostrar = false;
@@ -53,6 +63,7 @@ angular.module('starter.controllers', [])
     $scope.save=function (evento) {
       evento.hora = $filter('date')(evento.hora, 'shortTime');
       Rutina.update(evento);
+      $location.path('/tab/rutina');
     };
     $scope.cancel=function () {
       $location.path('/tab/rutina');
@@ -65,18 +76,49 @@ angular.module('starter.controllers', [])
   //PERFIL
   //----------------------------------------------------------------------------------
 
-  .controller('PerfilCtrl', function($location, $scope, Usuario) {
+  .controller('PerfilCtrl', function($location, $scope, Usuario, $cordovaFile) {
     if(!Usuario.get()){
       $location.path('/tab/perfil/registro');
     }
-    $scope.perfil = Usuario.get();
+    $scope.$on('$ionicView.enter', function(){
+      $scope.perfil = Usuario.get();
+      console.log($scope.perfil.rutaImagen);
+     $scope.perfil.rutaImagen = cordova.file.dataDirectory + $scope.perfil.rutaImagen;
+      console.log($scope.perfil.rutaImagen);
+    });
+
+
   })
-  .controller('PerfilRegistroCtrl', function($filter, $location, $scope, Usuario) {
+  .controller('PerfilRegistroCtrl', function($filter, $location, $scope, Usuario, ImageService, $ionicActionSheet) {
     $scope.save=function(usuario){
       usuario.fecha = $filter('date')(usuario.fecha, 'd-MMMM-yyyy');
       Usuario.create(usuario);
-      $location.path('/tab/rutina/registro');
+      $location.path('/tab/perfil');
     };
+
+    $scope.addMedia = function() {
+      $scope.hideSheet = $ionicActionSheet.show({
+        buttons: [
+          { text: 'Tomar foto' },
+          { text: 'Escoger foto' }
+        ],
+        titleText: 'Agregar Imagen',
+        cancelText: 'Cancelar',
+        buttonClicked: function(index) {
+          $scope.addImage(index);
+        }
+      });
+    };
+
+    $scope.addImage = function(type) {
+      $scope.hideSheet();
+      ImageService.handleMediaDialog(type, 0).then(function() {
+        $scope.$apply();
+      });
+
+
+    };
+
   })
 
   //----------------------------------------------------------------------------------
@@ -96,11 +138,13 @@ angular.module('starter.controllers', [])
     if(!Usuario.get()){
       $location.path('/tab/perfil/registro');
     }
+    $scope.$on('$ionicView.enter', function(){
+      $scope.familiares = Familiares.all();
+    });
     $scope.mostrar = false;
-    $scope.familiares = Familiares.all();
     $scope.remove=function(familiar){
-      console.log("paso por aquí");
       Familiares.remove(familiar);
+      $scope.familiares = Familiares.all();
     };
     $scope.edit=function () {
       $scope.mostrar = !$scope.mostrar;
@@ -125,6 +169,7 @@ angular.module('starter.controllers', [])
     $scope.familiar = Familiares.get($stateParams.familiarId);
     $scope.save=function(familiar){
       Familiares.update(familiar);
+      $location.path('/tab/familiares');
     };
     $scope.cancel=function() {
       $location.path('/tab/familiares');
