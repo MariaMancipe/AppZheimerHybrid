@@ -1,20 +1,28 @@
 <ion-view view-title="Juego">
   <ion-content>
-    <h1>¿Quien es {{respuesta.nombre}}?</h1>
+    <h3>¿Quien es {{random[respuesta].nombre}}?</h3>
     <div class="row">
       <div class="col">
-        <img ng-src="" style="height: 64px">
+        <button class="button" ng-click="check(0)">
+          <img ng-src="{{random[0].rutaImagen}}" style="height: 210px">
+        </button>
       </div>
       <div class="col">
-        <img ng-src="" style="height: 64px">
+        <button class="button" ng-click="check(1)">
+          <img ng-src="{{random[1].rutaImagen}}" style="height: 210px">
+        </button>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <img ng-src="" style="height: 64px">
+        <button class="button" ng-click="check(2)">
+          <img ng-src="{{random[2].rutaImagen}}" style="height: 210px">
+        </button>
       </div>
       <div class="col">
-        <img ng-src="" style="height: 64px">
+        <button class="button" ng-click="check(3)">
+          <img ng-src="{{random[3].rutaImagen}}" style="height: 210px">
+          </button>
       </div>
     </div>
   </ion-content>

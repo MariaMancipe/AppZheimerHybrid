@@ -9,6 +9,8 @@ angular.module('starter.controllers', [])
 
     $scope.$on('$ionicView.enter', function(){
       $scope.rutina = Rutina.all();
+      if(!$scope.rutina)
+        alert("Por favor agregue ACTIVIDADES a la RUTINA");
     });
     $scope.$on('$ionicView.loaded', function(){
       $scope.rutina = Rutina.all();
@@ -31,7 +33,7 @@ angular.module('starter.controllers', [])
     $scope.save=function (evento) {
       evento.hora = $filter('date')(evento.hora, 'shortTime');
       Rutina.add(evento);
-      $scope.mostrar = true;
+      $location.path('/tab/rutina');
       $scope.share(Usuario.get().nombre +" quiere compartir la actividad " + evento.nombre+ " contigo, a la hora " + evento.hora);
     };
     $scope.cancel=function () {
@@ -111,16 +113,17 @@ angular.module('starter.controllers', [])
     }
     $scope.familiares=Familiares.all();
     $scope.random=[];
-    $scope.respuesta="";
+    $scope.respuesta=0;
     $scope.set = function(){
       $scope.random=[];
-      if($Scope.familiares.length>=4){
+      $scope.respuesta =0;
+      if($scope.familiares.length>=4){
         for(var i =0; i<4;i++){
           $scope.random[i]= $scope.familiares[Math.floor(Math.random()*$scope.familiares.length)];
         }
         $scope.respuesta = Math.floor(Math.random()*4);
       }else{
-        alert("Por favor agregue más familiares. Usted tiene una familia");
+        alert("Por favor agregue más familiares para iniciar el juego");
       }
     };
     $scope.check=function (index) {
@@ -141,6 +144,8 @@ angular.module('starter.controllers', [])
     }
     $scope.$on('$ionicView.enter', function(){
       $scope.familiares = Familiares.all();
+      if(!$scope.familiares)
+        alert("Por favor agregue a sus FAMILIARES a la lista");
     });
     $scope.mostrar = false;
     $scope.remove=function(familiar){
@@ -155,7 +160,7 @@ angular.module('starter.controllers', [])
   .controller('FamiliaresRegistroCtrl', function($location, $scope, Familiares, ImageService) {
     $scope.mostrar = false;
     $scope.save=function(familiar){
-      $scope.mostrar = true;
+      $location.path('/tab/familiares');
       Familiares.add(familiar);
     };
     $scope.cancel=function() {
@@ -180,6 +185,12 @@ angular.module('starter.controllers', [])
     };
     $scope.cancel=function() {
       $location.path('/tab/familiares');
+    };
+
+    $scope.addMedia = function() {
+      ImageService.handleMediaDialog(0, 1).then(function() {
+        $scope.$apply();
+      });
     };
 
   })
