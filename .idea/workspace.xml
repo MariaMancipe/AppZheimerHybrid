@@ -6,7 +6,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appzheimer/config.xml" afterPath="$PROJECT_DIR$/appzheimer/config.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appzheimer/www/js/controllers.js" afterPath="$PROJECT_DIR$/appzheimer/www/js/controllers.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appzheimer/www/js/services.js" afterPath="$PROJECT_DIR$/appzheimer/www/js/services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appzheimer/www/templates/perfil-registro.html" afterPath="$PROJECT_DIR$/appzheimer/www/templates/perfil-registro.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appzheimer/www/templates/familiar-registro.html" afterPath="$PROJECT_DIR$/appzheimer/www/templates/familiar-registro.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appzheimer/www/templates/tab-familiares.html" afterPath="$PROJECT_DIR$/appzheimer/www/templates/tab-familiares.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appzheimer/www/templates/tab-juego.html" afterPath="$PROJECT_DIR$/appzheimer/www/templates/tab-juego.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appzheimer/www/templates/tab-perfil.html" afterPath="$PROJECT_DIR$/appzheimer/www/templates/tab-perfil.html" />
     </list>
     <ignored path="AppZheimerHybrid.iws" />
@@ -30,11 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="controllers.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="controllers.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/appzheimer/www/js/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1826">
-              <caret line="85" column="5" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
+            <state relative-caret-position="170">
+              <caret line="113" column="22" selection-start-line="113" selection-start-column="22" selection-end-line="113" selection-end-column="22" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -45,8 +47,8 @@
       <file leaf-file-name="services.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/appzheimer/www/js/services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4532">
-              <caret line="206" column="29" selection-start-line="206" selection-start-column="29" selection-end-line="206" selection-end-column="29" />
+            <state relative-caret-position="242">
+              <caret line="182" column="25" selection-start-line="182" selection-start-column="25" selection-end-line="182" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -56,9 +58,22 @@
         <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/chat-detail.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="176">
-              <caret line="8" column="64" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="64" />
+              <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="66" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tab-juego.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/tab-juego.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
               <folding>
-                <element signature="n#style#0;n#img#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#1;n#div#1;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -67,22 +82,9 @@
       <file leaf-file-name="perfil-registro.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/perfil-registro.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="506">
+              <caret line="23" column="17" selection-start-line="21" selection-start-column="8" selection-end-line="23" selection-end-column="17" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tab-perfil.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/tab-perfil.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-              <folding>
-                <element signature="n#style#0;n#ion-scroll#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#ion-scroll#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -90,8 +92,8 @@
       <file leaf-file-name="familiar-registro.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/familiar-registro.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="21" column="55" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="55" />
+            <state relative-caret-position="418">
+              <caret line="25" column="67" selection-start-line="25" selection-start-column="67" selection-end-line="25" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -100,38 +102,18 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/appzheimer/www/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2684">
+            <state relative-caret-position="1182">
               <caret line="122" column="6" selection-start-line="122" selection-start-column="6" selection-end-line="122" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tabs.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/tabs.html">
+      <file leaf-file-name="config.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/appzheimer/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
-              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="manifest.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/appzheimer/www/manifest.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tab-rutina.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/tab-rutina.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="11" column="94" selection-start-line="11" selection-start-column="94" selection-end-line="11" selection-end-column="94" />
+            <state relative-caret-position="446">
+              <caret line="46" column="47" selection-start-line="46" selection-start-column="47" selection-end-line="46" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -153,14 +135,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/appzheimer/www/templates/tab-configuracion.html" />
-        <option value="$PROJECT_DIR$/appzheimer/www/templates/tab-juego.html" />
         <option value="$PROJECT_DIR$/appzheimer/package.json" />
         <option value="$PROJECT_DIR$/appzheimer/ionic.config.json" />
         <option value="$PROJECT_DIR$/appzheimer/www/templates/rutina-modal.html" />
         <option value="$PROJECT_DIR$/appzheimer/www/templates/tab-chats.html" />
         <option value="$PROJECT_DIR$/appzheimer/www/css/style.css" />
-        <option value="$PROJECT_DIR$/appzheimer/www/templates/familiar-registro.html" />
-        <option value="$PROJECT_DIR$/appzheimer/www/templates/tab-familiares.html" />
         <option value="$PROJECT_DIR$/appzheimer/www/templates/tab-rutina.html" />
         <option value="$PROJECT_DIR$/appzheimer/www/index.html" />
         <option value="$PROJECT_DIR$/appzheimer/www/manifest.json" />
@@ -168,9 +147,14 @@
         <option value="$PROJECT_DIR$/appzheimer/www/templates/tabs.html" />
         <option value="$PROJECT_DIR$/appzheimer/www/templates/evento-registro.html" />
         <option value="$PROJECT_DIR$/appzheimer/www/templates/perfil-registro.html" />
-        <option value="$PROJECT_DIR$/appzheimer/www/js/services.js" />
-        <option value="$PROJECT_DIR$/appzheimer/www/js/controllers.js" />
+        <option value="$PROJECT_DIR$/appzheimer/platforms/android/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/appzheimer/www/templates/tab-perfil.html" />
+        <option value="$PROJECT_DIR$/appzheimer/www/templates/tab-familiares.html" />
+        <option value="$PROJECT_DIR$/appzheimer/www/templates/familiar-registro.html" />
+        <option value="$PROJECT_DIR$/appzheimer/www/js/services.js" />
+        <option value="$PROJECT_DIR$/appzheimer/www/templates/tab-juego.html" />
+        <option value="$PROJECT_DIR$/appzheimer/config.xml" />
+        <option value="$PROJECT_DIR$/appzheimer/www/js/controllers.js" />
       </list>
     </option>
   </component>
@@ -214,6 +198,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -333,7 +318,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -419,11 +403,12 @@
       <workItem from="1477849441864" duration="27611000" />
       <workItem from="1477903578034" duration="8582000" />
       <workItem from="1477925885310" duration="77000" />
+      <workItem from="1477969846916" duration="9984000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70715000" />
+    <option name="totallyTimeSpent" value="80699000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -442,18 +427,18 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.49814913" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.50185084" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.49814913" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38278595" sideWeight="0.49814913" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20838052" sideWeight="0.49814913" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -472,6 +457,38 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/appzheimer/www/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2684">
+          <caret line="122" column="6" selection-start-line="122" selection-start-column="6" selection-end-line="122" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/tabs.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appzheimer/www/manifest.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/tab-rutina.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="94" selection-start-line="11" selection-start-column="94" selection-end-line="11" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/appzheimer/www/js/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -495,7 +512,7 @@
         <state relative-caret-position="176">
           <caret line="8" column="64" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="64" />
           <folding>
-            <element signature="n#style#0;n#img#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -603,16 +620,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="11" />
           <folding>
-            <element signature="n#style#0;n#ion-scroll#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#ion-scroll#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#ion-scroll#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/tab-juego.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="27" selection-start-line="0" selection-start-column="27" selection-end-line="0" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -676,31 +685,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/tab-chats.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="73" selection-start-line="9" selection-start-column="73" selection-end-line="9" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/tab-familiares.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="109" selection-start-line="13" selection-start-column="109" selection-end-line="13" selection-end-column="109" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/appzheimer/ionic.config.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/appzheimer/config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -723,73 +711,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/chat-detail.html">
+    <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/tabs.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="64" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="64" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/appzheimer/www/js/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4532">
-          <caret line="206" column="29" selection-start-line="206" selection-start-column="29" selection-end-line="206" selection-end-column="29" />
+        <state relative-caret-position="572">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/appzheimer/www/js/controllers.js">
+    <entry file="file://$PROJECT_DIR$/appzheimer/platforms/android/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1826">
-          <caret line="85" column="5" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state relative-caret-position="402">
+          <caret line="24" column="56" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/perfil-registro.html">
+    <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/tab-rutina.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="242">
+          <caret line="11" column="94" selection-start-line="11" selection-start-column="94" selection-end-line="11" selection-end-column="94" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/tab-perfil.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        <state relative-caret-position="308">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#ion-scroll#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#ion-scroll#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#ion-scroll#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/familiar-registro.html">
+    <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/tab-chats.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="21" column="55" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="55" />
+        <state relative-caret-position="88">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/appzheimer/www/js/app.js">
+    <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/tab-familiares.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2684">
-          <caret line="122" column="6" selection-start-line="122" selection-start-column="6" selection-end-line="122" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/tabs.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        <state relative-caret-position="286">
+          <caret line="13" column="62" selection-start-line="13" selection-start-column="62" selection-end-line="13" selection-end-column="62" />
           <folding />
         </state>
       </provider>
@@ -802,11 +769,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/tab-rutina.html">
+    <entry file="file://$PROJECT_DIR$/appzheimer/www/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1182">
+          <caret line="122" column="6" selection-start-line="122" selection-start-column="6" selection-end-line="122" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appzheimer/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="46" column="47" selection-start-line="46" selection-start-column="47" selection-end-line="46" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appzheimer/www/js/services.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
-          <caret line="11" column="94" selection-start-line="11" selection-start-column="94" selection-end-line="11" selection-end-column="94" />
+          <caret line="182" column="25" selection-start-line="182" selection-start-column="25" selection-end-line="182" selection-end-column="25" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/chat-detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/perfil-registro.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="23" column="17" selection-start-line="21" selection-start-column="8" selection-end-line="23" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/familiar-registro.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="25" column="67" selection-start-line="25" selection-start-column="67" selection-end-line="25" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appzheimer/www/templates/tab-juego.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#1;n#div#1;n#ion-content#0;n#ion-view#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appzheimer/www/js/controllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="113" column="22" selection-start-line="113" selection-start-column="22" selection-end-line="113" selection-end-column="22" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

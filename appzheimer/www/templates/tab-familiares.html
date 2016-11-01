@@ -7,6 +7,7 @@
     <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="f in familiares" type="item-text-wrap">
         <!--img ng-src="{{chat.face}}"-->
+        <img ng-src="{{f.rutaImagen}}">
         <div>
           <h2>{{f.nombre}}</h2>
           <p>{{f.apodo}} - {{f.parentesco}}</p>

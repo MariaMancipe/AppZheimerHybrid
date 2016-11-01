@@ -178,6 +178,7 @@ angular.module('starter.services', [])
       }
       return {
         destinationType: Camera.DestinationType.FILE_URI,
+        correctOrientation:true,
         sourceType: source,
         allowEdit: false,
         encodingType: Camera.EncodingType.JPEG,
@@ -205,9 +206,9 @@ angular.module('starter.services', [])
               imageName = newName;
               console.log(newName);
               if(service == 0)
-                Usuario.setPath(newName);
+                Usuario.setPath(cordova.file.dataDirectory + newName);
               else
-                Familiares.setPath(newName);
+                Familiares.setPath( cordova.file.dataDirectory + newName);
               //FileService.storeImage(newName);
               resolve();
             }, function(e) {

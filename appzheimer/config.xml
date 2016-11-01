@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.appzheimer985128" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>appzheimer</name>
+  <name>apzheimer</name>
   <description>
         An Ionic Framework and Cordova project.
     </description>
@@ -19,6 +19,10 @@
   <preference name="SplashScreen" value="screen"/>
   <feature name="StatusBar">
     <param name="ios-package" onload="true" value="CDVStatusBar"/>
+  </feature>
+  <feature name="Camera">
+    <param name="ios-package" value="org.apache.cordova.CameraLauncher"/>
+    <param name="android-package" value="org.apache.cordova.CameraLauncher"/>
   </feature>
   <platform name="android">
     <icon density="ldpi" src="resources\android\icon\drawable-ldpi-icon.png"/>
@@ -39,5 +43,6 @@
   <plugin name="cordova-plugin-splashscreen" spec="~4.0.0"/>
   <plugin name="cordova-plugin-statusbar" spec="~2.2.0"/>
   <plugin name="ionic-plugin-keyboard" spec="~2.2.1"/>
+  <allow-navigation href="http://192.168.0.5:8200"/>
   <allow-navigation href="http://192.168.0.5:8100"/>
 </widget>

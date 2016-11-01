@@ -17,6 +17,10 @@
           <input type="text" name="parentesco" ng-model="familiar.parentesco" placeholder="Ingresa el parentesco de tu familiar" required>
         </label>
 
+        <button class="button button-full button-energized" ng-show="!mostrar" ng-click="addMedia()">
+          Agregar Imagen
+        </button>
+
       </div>
       <button class="button button-full button-balanced" ng-show="mostrar" ng-click="init()">Agregar otro familiar</button>
       <button class="button button-full button-positive" type="submit" ng-click="save(familiar)" ng-show="!mostrar" >

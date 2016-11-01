@@ -82,9 +82,6 @@ angular.module('starter.controllers', [])
     }
     $scope.$on('$ionicView.enter', function(){
       $scope.perfil = Usuario.get();
-      console.log($scope.perfil.rutaImagen);
-     $scope.perfil.rutaImagen = cordova.file.dataDirectory + $scope.perfil.rutaImagen;
-      console.log($scope.perfil.rutaImagen);
     });
 
 
@@ -97,26 +94,9 @@ angular.module('starter.controllers', [])
     };
 
     $scope.addMedia = function() {
-      $scope.hideSheet = $ionicActionSheet.show({
-        buttons: [
-          { text: 'Tomar foto' },
-          { text: 'Escoger foto' }
-        ],
-        titleText: 'Agregar Imagen',
-        cancelText: 'Cancelar',
-        buttonClicked: function(index) {
-          $scope.addImage(index);
-        }
-      });
-    };
-
-    $scope.addImage = function(type) {
-      $scope.hideSheet();
-      ImageService.handleMediaDialog(type, 0).then(function() {
+      ImageService.handleMediaDialog(0, 0).then(function() {
         $scope.$apply();
       });
-
-
     };
 
   })
@@ -125,10 +105,31 @@ angular.module('starter.controllers', [])
   //JUEGO
   //----------------------------------------------------------------------------------
 
-  .controller('JuegoCtrl', function($location, $scope, Usuario) {
+  .controller('JuegoCtrl', function($location, $scope, Usuario, Familiares) {
     if(!Usuario.get()){
       $location.path('/tab/perfil/registro');
     }
+    $scope.familiares=Familiares.all();
+    $scope.random=[];
+    $scope.respuesta="";
+    $scope.set = function(){
+      $scope.random=[];
+      if($Scope.familiares.length>=4){
+        for(var i =0; i<4;i++){
+          $scope.random[i]= $scope.familiares[Math.floor(Math.random()*$scope.familiares.length)];
+        }
+        $scope.respuesta = Math.floor(Math.random()*4);
+      }else{
+        alert("Por favor agregue más familiares. Usted tiene una familia");
+      }
+    };
+    $scope.check=function (index) {
+      if($scope.respuesta == index)
+        $scope.set();
+      else
+        alert("Inténtelo de nuevo. No se preocupe");
+    };
+    $scope.set();
   })
 
   //----------------------------------------------------------------------------------
@@ -151,7 +152,7 @@ angular.module('starter.controllers', [])
     };
 
   })
-  .controller('FamiliaresRegistroCtrl', function($location, $scope, Familiares) {
+  .controller('FamiliaresRegistroCtrl', function($location, $scope, Familiares, ImageService) {
     $scope.mostrar = false;
     $scope.save=function(familiar){
       $scope.mostrar = true;
@@ -162,6 +163,12 @@ angular.module('starter.controllers', [])
     };
     $scope.init=function () {
       $scope.mostrar = false;
+    };
+
+    $scope.addMedia = function() {
+      ImageService.handleMediaDialog(0, 1).then(function() {
+        $scope.$apply();
+      });
     };
   })
 
