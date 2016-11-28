@@ -1,11 +1,53 @@
 angular.module('starter.services', [])
-  .factory('Familiares',function () {
+  .factory('Servicios',function($http, Familiares, Rutina, Usuario){
+    return{
+      getFamiliares:function(){
+        $http.get(URL).then(function(resp){
+          console.log('Success', resp); // JSON object
+          Familiares.setAll(JSON.parse(resp));
+        }, function(err){
+          console.error('ERR', err);
+          alert('Error'+ err);
+        });
+      },
+      getPerfil:function () {
+        $http.get(URL).then(function(resp){
+          console.log('Success', resp); // JSON object
+          Usuario.setAll(JSON.parse(resp));
+        }, function(err){
+          console.error('ERR', err);
+          alert('Error'+ err);
+        });
+      },
+      getRutina:function(){
+        $http.get(URL).then(function(resp){
+          console.log('Success', resp); // JSON object
+          Rutina.setAll(JSON.parse(resp));
+        }, function(err){
+          console.error('ERR', err);
+          alert('Error'+ err);
+        });
+      },
+      getUbicacion:function () {
+
+      },
+      getAll:function(){
+        getRutina();
+        getFamiliares();
+        getPerfil();
+      }
+    };
+  })
+  .factory('Familiares',function (Usuario) {
     var FAMILIARES_KEY="FAMILIARES";
     var FAMILIARES_INDEX = "FAMILIARES_INDEX";
     var familiares;
     var path;
     var index =(window.localStorage.getItem(FAMILIARES_INDEX))?JSON.parse(window.localStorage.getItem(FAMILIARES_INDEX)):0;
     return{
+      setAll:function(fams){
+        familiares = fams;
+      },
       all:function(){
         familiares =(window.localStorage.getItem(FAMILIARES_KEY))?JSON.parse(window.localStorage.getItem(FAMILIARES_KEY)):[];
         return familiares;
@@ -66,12 +108,15 @@ angular.module('starter.services', [])
     };
 
   })
-  .factory('Rutina',function () {
+  .factory('Rutina',function (Usuario) {
     var RUTINA_KEY ="RUTINA";
     var RUTINA_INDEX="RUTINA_INDEX";
     var index=(window.localStorage.getItem(RUTINA_INDEX))?JSON.parse(window.localStorage.getItem(RUTINA_INDEX)):0;
     var rutina;
     return{
+      setAll:function (rut) {
+        rutina = rut;
+      },
       all:function(){
         rutina = (window.localStorage.getItem(RUTINA_KEY))?JSON.parse(window.localStorage.getItem(RUTINA_KEY)):[];
         return rutina;
@@ -127,10 +172,15 @@ angular.module('starter.services', [])
     };
   })
   .factory('Usuario',function () {
+    var estado = 'PACIENTE';
     var usuario;
     var USUARIO_KEY="USUARIO";
     var path;
     return{
+      setAll:function (p) {
+        usuario = p;
+        estado = 'FAMILIAR';
+      },
       remove:function(){
         usuario ={};
         window.localStorage.removeItem(USUARIO_KEY);

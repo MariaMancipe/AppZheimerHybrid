@@ -79,6 +79,7 @@ angular.module('starter.controllers', [])
   //----------------------------------------------------------------------------------
 
   .controller('PerfilCtrl', function($location, $scope, Usuario, $cordovaFile) {
+
     if(!Usuario.get()){
       $location.path('/tab/perfil/registro');
     }
@@ -88,7 +89,10 @@ angular.module('starter.controllers', [])
 
 
   })
-  .controller('PerfilRegistroCtrl', function($filter, $location, $scope, Usuario, ImageService, $ionicActionSheet) {
+  .controller('PerfilRegistroCtrl', function($filter, $location, $scope, Usuario, ImageService, $ionicActionSheet, Servicios) {
+
+    $scope.registro = false;
+    $scope.familiar = false;
     $scope.save=function(usuario){
       usuario.fecha = $filter('date')(usuario.fecha, 'd-MMMM-yyyy');
       Usuario.create(usuario);
@@ -99,6 +103,11 @@ angular.module('starter.controllers', [])
       ImageService.handleMediaDialog(0, 0).then(function() {
         $scope.$apply();
       });
+    };
+
+    $scope.cargar = function(email){
+      Servicios.getAll();
+      $location.path('/tab/perfil');
     };
 
   })
@@ -127,7 +136,7 @@ angular.module('starter.controllers', [])
       }
     };
     $scope.check=function (index) {
-      if($scope.respuesta == index)
+      if($scope.random[$scope.respuesta].nombre == $scope.random[index].nombre)
         $scope.set();
       else
         alert("Inténtelo de nuevo. No se preocupe");
@@ -192,6 +201,260 @@ angular.module('starter.controllers', [])
         $scope.$apply();
       });
     };
+
+  })
+  //----------------------------------------------------------------------------------
+  //POSICION
+  //----------------------------------------------------------------------------------
+  .controller('PosicionCtrl', function($filter, Usuario, $location, $scope, Familiares, $cordovaDeviceMotion, $ionicPlatform) {
+    if(!Usuario.get()){
+      $location.path('/tab/perfil/registro');
+    }
+
+    $scope.perfil = Usuario.get();
+    var options = {timeout: 10000, enableHighAccuracy: true};
+
+    // watch Acceleration options
+    $scope.options = {
+      frequency: 100, // Measure every 100ms
+      deviation : 25  // We'll use deviation to determine the shake event, best values in the range between 25 and 30
+    };
+
+// Current measurements
+    $scope.measurements = {
+      x : null,
+      y : null,
+      z : null,
+      timestamp : null
+    }
+
+// Previous measurements
+    $scope.previousMeasurements = {
+      x : null,
+      y : null,
+      z : null,
+      timestamp : null
+    }
+
+    $scope.startWatching = function() {
+
+      // Device motion configuration
+      $scope.watch = $cordovaDeviceMotion.watchAcceleration($scope.options);
+
+      // Device motion initilaization
+      $scope.watch.then(null, function(error) {
+        console.log('Error');
+      },function(result) {
+
+        // Set current data
+        $scope.measurements.x = result.x;
+        $scope.measurements.y = result.y;
+        $scope.measurements.z = result.z;
+        $scope.measurements.timestamp = result.timestamp;
+
+        // Detecta shake
+        $scope.detectShake(result);
+
+      });
+    };
+
+    // Stop watching method
+    $scope.stopWatching = function() {
+      $scope.watch.clearWatch();
+    };
+
+    // Detect shake method
+    $scope.detectShake = function(result) {
+
+      //Object to hold measurement difference between current and old data
+      var measurementsChange = {};
+
+      // Calculate measurement change only if we have two sets of data, current and old
+      if ($scope.previousMeasurements.x !== null) {
+        measurementsChange.x = Math.abs($scope.previousMeasurements.x, result.x);
+        measurementsChange.y = Math.abs($scope.previousMeasurements.y, result.y);
+        measurementsChange.z = Math.abs($scope.previousMeasurements.z, result.z);
+        $scope.posicion = $filter('number')(measurementsChange.y, 2);
+      }
+
+      // If measurement change is bigger then predefined deviation
+      if ( measurementsChange.x + measurementsChange.y + measurementsChange.z > $scope.options.deviation || measurementsChange.z>15) {
+        $scope.stopWatching();  // Stop watching because it will start triggering like hell
+        console.log('Shake detected'); // shake detected
+        setTimeout($scope.startWatching(), 1000);  // Again start watching after 1 sex
+
+        // Clean previous measurements after succesfull shake detection, so we can do it next time
+        $scope.previousMeasurements = {
+          x: null,
+          y: null,
+          z: null
+        }
+
+      } else {
+        // On first measurements set it as the previous one
+        $scope.previousMeasurements = {
+          x: result.x,
+          y: result.y,
+          z: result.z
+        }
+      }
+
+    };
+    $scope.$on('$ionicView.beforeLeave', function(){
+      $scope.watch.clearWatch(); // Turn off motion detection watcher
+    });
+
+
+
+    $scope.startWatching();
+
+  })
+  //----------------------------------------------------------------------------------
+  //UBICACION
+  //----------------------------------------------------------------------------------
+  .controller('UbicacionCtrl', function(Usuario, $location, $scope, Familiares, $cordovaGeolocation, $cordovaDeviceMotion, $ionicPlatform) {
+    if(!Usuario.get()){
+      $location.path('/tab/perfil/registro');
+    }
+    var options = {timeout: 10000, enableHighAccuracy: true};
+
+    $cordovaGeolocation.getCurrentPosition(options).then(function(position){
+      var address = '';
+      var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      var request = {
+        latLng: latLng
+      };
+      var mapOptions = {
+        center: latLng,
+        zoom: 15,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+
+      $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+      $scope.geocoder = new google.maps.Geocoder();
+      $scope.geocoder.geocode(request, function(data, status){
+        if(status == google.maps.GeocoderStatus.OK){
+          if (data[0] != null) {
+            address = data[0].formatted_address;
+          } else {
+            alert("No address available");
+          }
+        }
+      });
+      google.maps.event.addListenerOnce($scope.map, 'idle', function(){
+        var marker = new google.maps.Marker({
+          map: $scope.map,
+          animation: google.maps.Animation.DROP,
+          position: latLng
+        });
+        var infoWindow = new google.maps.InfoWindow({
+          content: address
+        });
+        infoWindow.open($scope.map,marker);
+
+        google.maps.event.addListener(marker, 'click', function () {
+          infoWindow.open($scope.map, marker);
+        });
+
+      });
+
+    }, function(error){
+      console.log("Could not get location");
+    });
+
+    // watch Acceleration options
+    $scope.options = {
+      frequency: 100, // Measure every 100ms
+      deviation : 25  // We'll use deviation to determine the shake event, best values in the range between 25 and 30
+    };
+
+// Current measurements
+    $scope.measurements = {
+      x : null,
+      y : null,
+      z : null,
+      timestamp : null
+    }
+
+// Previous measurements
+    $scope.previousMeasurements = {
+      x : null,
+      y : null,
+      z : null,
+      timestamp : null
+    }
+
+    $scope.startWatching = function() {
+
+      // Device motion configuration
+      $scope.watch = $cordovaDeviceMotion.watchAcceleration($scope.options);
+
+      // Device motion initilaization
+      $scope.watch.then(null, function(error) {
+        console.log('Error');
+      },function(result) {
+
+        // Set current data
+        $scope.measurements.x = result.x;
+        $scope.measurements.y = result.y;
+        $scope.measurements.z = result.z;
+        $scope.measurements.timestamp = result.timestamp;
+
+        // Detecta shake
+        $scope.detectShake(result);
+
+      });
+    };
+
+    // Stop watching method
+    $scope.stopWatching = function() {
+      $scope.watch.clearWatch();
+    };
+
+    // Detect shake method
+    $scope.detectShake = function(result) {
+
+      //Object to hold measurement difference between current and old data
+      var measurementsChange = {};
+
+      // Calculate measurement change only if we have two sets of data, current and old
+      if ($scope.previousMeasurements.x !== null) {
+        measurementsChange.x = Math.abs($scope.previousMeasurements.x, result.x);
+        measurementsChange.y = Math.abs($scope.previousMeasurements.y, result.y);
+        measurementsChange.z = Math.abs($scope.previousMeasurements.z, result.z);
+      }
+
+      // If measurement change is bigger then predefined deviation
+      if ( measurementsChange.x + measurementsChange.y + measurementsChange.z > $scope.options.deviation || measurementsChange.z>15) {
+        $scope.stopWatching();  // Stop watching because it will start triggering like hell
+        alert('Se detectó un cambio en los movimientos. Posiblemente, '+ Usuario.get().nombre+ " ha tenido un accidente");
+        console.log('Shake detected'); // shake detected
+        setTimeout($scope.startWatching(), 1000);  // Again start watching after 1 sex
+
+        // Clean previous measurements after succesfull shake detection, so we can do it next time
+        $scope.previousMeasurements = {
+          x: null,
+          y: null,
+          z: null
+        }
+
+      } else {
+        // On first measurements set it as the previous one
+        $scope.previousMeasurements = {
+          x: result.x,
+          y: result.y,
+          z: result.z
+        }
+      }
+
+    };
+    $scope.$on('$ionicView.beforeLeave', function(){
+      $scope.watch.clearWatch(); // Turn off motion detection watcher
+    });
+
+
+
+    $scope.startWatching();
 
   })
   //----------------------------------------------------------------------------------
